@@ -1,0 +1,180 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  height: 400px;
+  width: 300px;
+  background:linear-gradient(180deg,
+  #9383C5,
+  #56e3fa);
+  border-radius: 20px;
+  box-shadow: 10px 10px 38px 0px rgba(0, 0, 0, 0.75);
+  
+  
+}
+
+.temperature-display-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 57%;
+  position: absolute;
+  top: 10px;
+}
+
+.temperature-display {
+  display: flex;
+  border-radius: 40%;
+  color: #ffffff;
+  height: 220px;
+  width: 220px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  border: 3px #ffffff solid;
+  transition: background 0.5s;
+  position:relative ;
+  top: 120px;
+  right: 10px;
+  left: 38px;
+}
+
+button  {
+  border-radius: 100px;
+   font-size: 32px;
+  color: #ffffff;
+  border: 2px #ffffff solid;
+  background-color: red;
+  text-align: center;
+  height: 52px;
+  width: 52px;
+  margin-right: 16px;
+  margin-top: 16px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+}
+
+  button.fade-in{
+    opacity: 1;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+
+button:hover {
+  
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 0;
+}
+
+
+
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.neutral {
+  background: rgb(184, 184, 184);
+}
+
+.cold {
+  background: #035aa6;
+}
+
+.hot {
+  background: #ff5200;
+}
+
+.plus{
+   background-color: green;
+   text-align: center;
+   height: 52px;
+   width: 52px;
+   margin-left: 117px;
+   margin-top: 16px;
+  }
+  
+
+.minus{
+  background-color: red;
+  text-align: center;
+  height: 52px;
+  width: 52px;
+  margin-right: 34px;
+  margin-top: 16px;
+}
+
+
+/* RIPPLE EFFECT */
+
+.effect-container{
+  position:relative;
+  overflow: hidden;
+  border-radius: 22px;
+
+  --effect-name:ripple;
+  --effect-duration:1000ms;
+  --effect-top:0px;
+  --effect-left:0px;
+  --effect-height:300px;
+  --effect-width:300px;
+  --effect-color:rgb(228, 50, 5);
+}
+
+.effect-container::before{
+  content:  "";
+  position: absolute;
+  opacity: 0.3;
+
+  top: var( --effect-top);
+  left:var( --effect-left);
+  height: var(--effect-height);
+  width: var(--effect-width );
+  border-radius: 60%;
+  transform: scale(0);
+  background: var(--effect-color);
+}
+
+.effect-container.active::before{
+  border-radius: 50%;
+  animation: ripple var(--effect-duration) linear forwards;
+}
+
+@keyframes ripple {
+
+  from{
+    transform: scale(0);
+  }
+  
+  to{
+    transform: scale(6);
+    opacity: 0;
+  }
+  
+}
